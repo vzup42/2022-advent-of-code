@@ -1,21 +1,15 @@
 fun main() {
-    fun summarizeCaloriesOfTopElves(input: List<String>, elvesToInvolve: Int): Int {
-        val separatorIndicies = input.indices.filter { input[it].isEmpty() }
-        val leftIntervalSides = listOf(0) + separatorIndicies.map { it + 1 }
-        val rightIntervalSides = separatorIndicies + input.size
-        require(leftIntervalSides.size == rightIntervalSides.size)
-
-        return leftIntervalSides.indices.map { index ->
-            input.subList(leftIntervalSides[index], rightIntervalSides[index]).map(String::toInt).sum()
-        }.sortedDescending().take(elvesToInvolve).sum()
+    fun summarizeCaloriesOfNTopElves(input: List<String>, elvesToInvolve: Int): Int {
+        return input.chunkedBy(String::isEmpty) { it.sumOf(String::toInt) }
+            .sortedDescending().take(elvesToInvolve).sum()
     }
 
     fun part1(input: List<String>): Int {
-        return summarizeCaloriesOfTopElves(input, 1)
+        return summarizeCaloriesOfNTopElves(input, 1)
     }
 
     fun part2(input: List<String>): Int {
-        return summarizeCaloriesOfTopElves(input, 3)
+        return summarizeCaloriesOfNTopElves(input, 3)
     }
 
     val testInput = readInput("Day01_test")
