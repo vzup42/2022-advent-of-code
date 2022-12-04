@@ -17,11 +17,11 @@ fun main() {
         }
     }
 
-    val testInput = readInput("day04/Day04_test")
+    val testInput = readInput("04", "test_input")
     check(part1(testInput) == 2)
     check(part2(testInput) == 4)
 
-    val input = readInput("day04/Day04")
+    val input = readInput("04", "input")
     println(part1(input))
     println(part2(input))
 }

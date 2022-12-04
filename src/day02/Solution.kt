@@ -16,15 +16,14 @@ fun main() {
         else -> throw IllegalArgumentException()
     }
 
-    fun part1(input: List<String>): Int =
-        input.sumOf {
-            val (opponentShapeString, myShapeString) = it.split(" ", limit = 2)
+    fun part1(input: List<String>): Int = input.sumOf {
+        val (opponentShapeString, myShapeString) = it.split(" ", limit = 2)
 
-            val opponentShape = parseShape(opponentShapeString)
-            val myShape = parseShape(myShapeString)
+        val opponentShape = parseShape(opponentShapeString)
+        val myShape = parseShape(myShapeString)
 
-            (myShape against opponentShape).score + myShape.score
-        }
+        (myShape against opponentShape).score + myShape.score
+    }
 
     fun parseOutcome(outcome: String) = when (outcome) {
         "X" -> LOSS
@@ -33,22 +32,21 @@ fun main() {
         else -> throw IllegalArgumentException()
     }
 
-    fun part2(input: List<String>): Int =
-        input.sumOf {
-            val (opponentShapeString, myOutcomeString) = it.split(" ", limit = 2)
+    fun part2(input: List<String>): Int = input.sumOf {
+        val (opponentShapeString, myOutcomeString) = it.split(" ", limit = 2)
 
-            val opponentShape = parseShape(opponentShapeString)
-            val myOutcome = parseOutcome(myOutcomeString)
+        val opponentShape = parseShape(opponentShapeString)
+        val myOutcome = parseOutcome(myOutcomeString)
 
-            myOutcome.score + (myOutcome by opponentShape).score
+        myOutcome.score + (myOutcome by opponentShape).score
 
-        }
+    }
 
-    val testInput = readInput("day02/Day02_test")
+    val testInput = readInput("02", "test_input")
     check(part1(testInput) == 15)
     check(part2(testInput) == 12)
 
-    val input = readInput("day02/Day02")
+    val input = readInput("02", "input")
     println(part1(input))
     println(part2(input))
 }

@@ -14,14 +14,13 @@ fun main() {
     fun part1(input: List<String>): Int =
         input.sumOf { line -> line.chunked(line.length / 2).findRepeatedElement().priority() }
 
-    fun part2(input: List<String>): Int =
-        input.chunked(3).sumOf { chunk -> chunk.findRepeatedElement().priority() }
+    fun part2(input: List<String>): Int = input.chunked(3).sumOf { chunk -> chunk.findRepeatedElement().priority() }
 
-    val testInput = readInput("day03/Day03_test")
+    val testInput = readInput("03", "test_input")
     check(part1(testInput) == 157)
     check(part2(testInput) == 70)
 
-    val input = readInput("day03/Day03")
+    val input = readInput("03", "input")
     println(part1(input))
     println(part2(input))
 }

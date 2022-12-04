@@ -17,11 +17,11 @@ fun main() {
         return summarizeCaloriesOfNTopElves(input, 3)
     }
 
-    val testInput = readInput("day01/Day01_test")
+    val testInput = readInput("01", "test_input")
     check(part1(testInput) == 24000)
     check(part2(testInput) == 45000)
 
-    val input = readInput("day01/Day01")
+    val input = readInput("01", "input")
     println(part1(input))
     println(part2(input))
 }
